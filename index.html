@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровой детокс | Освободитесь от гаджет-зависимости</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="stylesheet" href="manifest.json">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-content">
+            <h1 class="logo">UnPlugged</h1>
+            <p class="tagline">Верните себе реальную жизнь</p>
+        </div>
+    </header>
+
+    <!-- Навигация -->
+    <nav>
+        <ul>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="#tracker"><i class="fas fa-clock"></i> Трекер</a></li>
+            <li><a href="#challenges"><i class="fas fa-trophy"></i> Челленджи</a></li>
+            <li><a href="#tips"><i class="fas fa-lightbulb"></i> Советы</a></li>
+        </ul>
+    </nav>
+
+    <!-- Основной контент -->
+    <main>
+        <!-- Секция героя -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Цифровой детокс</h1>
+                <p>Освободитесь от зависимости гаджетов и верните контроль над своим временем</p>
+                <a href="#tracker" class="btn">Начать детокс</a>
+            </div>
+        </section>
+
+        <!-- Секция трекера -->
+        <section id="tracker" class="section">
+            <h2><i class="fas fa-clock"></i> Трекер экранного времени</h2>
+            <div class="tracker-container">
+                <div class="time-display" id="screenTime">0ч 0м 0с</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <button id="startTracker" class="btn">Начать отслеживание</button>
+            </div>
+        </section>
+
+        <!-- Секция челленджей -->
+        <section id="challenges" class="section">
+            <h2><i class="fas fa-trophy"></i> Челленджи</h2>
+            <div class="challenges-grid">
+                <div class="challenge-card" onclick="startChallenge(24)">
+                    <h3>24 часа без соцсетей</h3>
+                    <p>Попробуйте прожить день без Facebook, Instagram и других соцсетей</p>
+                    <div class="badge">Средний</div>
+                </div>
+                <div class="challenge-card" onclick="startChallenge(72)">
+                    <h3>3 дня без YouTube</h3>
+                    <p>Откажитесь от видеоплатформ на 3 дня</p>
+                    <div class="badge">Сложный</div>
+                </div>
+                <div class="challenge-card" onclick="startChallenge(168)">
+                    <h3>Неделя цифрового детокса</h3>
+                    <p>Только важные звонки и сообщения</p>
+                    <div class="badge">Эксперт</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция советов -->
+        <section id="tips" class="section">
+            <h2><i class="fas fa-lightbulb"></i> Советы по детоксу</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Не берите телефон утром</h3>
+                    <p>Первые 30 минут после пробуждения - без гаджетов</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Обедайте без телефона</h3>
+                    <p>Наслаждайтесь едой без отвлечений</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Читайте бумажные книги</h3>
+                    <p>Замените скроллинг соцсетей на чтение</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-list-check"></i> ToDo List</h2>
+            <div class="todo-container">
+                <div class="todo-form">
+                    <input type="text" id="todoInput" placeholder="Добавьте новую задачу...">
+                    <button id="addTodo" class="btn"><i class="fas fa-plus"></i> Добавить</button>
+                </div>
+                <ul id="todoList" class="todo-list">
+                    <!-- Задачи будут добавляться здесь -->
+                </ul>
+                <div class="todo-stats">
+                    <span id="totalTasks">Всего задач: 0</span>
+                    <span id="completedTasks">Выполнено: 0</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><i class="fas fa-envelope"></i> Обратная связь</h2>
+            <div class="feedback-container">
+                <form action="php/feedback.php" method="POST" class="feedback-form">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Сообщение</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить</button>
+                </form>
+                <div id="feedbackMessage" class="feedback-message"></div>
+            </div>
+        </section>
+
+        <!-- Добавить перед </main> -->
+       <section class="section" id="register">
+        <h2><i class="fas fa-user-plus"></i> Регистрация</h2>
+        <div class="register-container">
+            <form action="php/register.php" method="POST" class="register-form" id="registerForm">
+                <div class="form-group">
+                    <label for="reg-username"><i class="fas fa-user"></i> Имя пользователя</label>
+                    <input type="text" id="reg-username" name="username" required minlength="3" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password"><i class="fas fa-lock"></i> Пароль</label>
+                    <input type="password" id="reg-password" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm"><i class="fas fa-lock"></i> Подтвердите пароль</label>
+                    <input type="password" id="reg-confirm" name="confirm_password" required>
+                </div>
+                <button type="submit" class="btn">Зарегистрироваться</button>
+            </form>
+            <div id="registerMessage" class="feedback-message" style="display: none;"></div>
+        </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelector('.feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const messageDiv = document.getElementById('feedbackMessage');
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => response.text())
+            .then(data => {
+                messageDiv.textContent = data;
+                messageDiv.style.display = 'block';
+                if (data.includes('успешно')) {
+                    messageDiv.className = 'feedback-message success';
+                    form.reset();
+                } else {
+                    messageDiv.className = 'feedback-message error';
+                }
+            })
+            .catch(error => {
+                messageDiv.textContent = 'Произошла ошибка при отправке формы.';
+                messageDiv.className = 'feedback-message error';
+                messageDiv.style.display = 'block';
+            });
+        });
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('.sw.js')
+            .then(() => navigator.service.Worker.ready.then((worker)=>{
+                worker.sync.register('syncdata');
+            }))
+            .catch((err)=>console.log(err));
+        }
+    </script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log('SW registered'))
+            .catch(err => console.log('SW error:', err));
+  }
+    </script>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Цифровой детокс. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
